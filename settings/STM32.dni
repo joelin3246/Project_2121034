@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=-720584776
+Checksum=110028318
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -122,6 +122,12 @@ GraphEnabled=0
 ShowTimeLog=1
 ShowTimeSum=1
 SumSortOrder=0
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\source\Periph_Driver\eeprom.c}.502.3" 0 0 1 "" 0 "" 0
+Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\source\SpeedDetection.c}.195.5" 0 0 1 "" 0 "" 0
+Count=2
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -129,20 +135,6 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[CallStackLog]
-Enabled=0
-[DriverProfiling]
-Enabled=0
-Mode=3
-Graph=0
-Symbiont=0
-Exclusions=
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\source\Periph_Driver\eeprom.c}.502.3" 0 0 1 "" 0 "" 0
-Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\source\SpeedDetection.c}.195.5" 0 0 1 "" 0 "" 0
-Count=2
 [Aliases]
 A0=_ "C:\Users\stone\Desktop\STM32\source\mode\Mode_Idle.c" ""
 A1=_ "D:\英達開發資料\21-12-001\21-12-001\程式\2112001_test\source\main.c" ""
@@ -151,3 +143,11 @@ A3=_ "D:\英達開發資料\21-12-001\21-12-001\程式\STM32\Libraries\STM32F0xx_StdPeri
 A4=_ "D:\英達開發資料\21-12-001\21-12-001\程式\STM32\source\stm32f0xx_it.c" ""
 Count=5
 SuppressDialog=1
+[CallStackLog]
+Enabled=0
+[DriverProfiling]
+Enabled=0
+Mode=3
+Graph=0
+Symbiont=0
+Exclusions=

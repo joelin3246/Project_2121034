@@ -231,22 +231,6 @@ void  F_ReadWarkUpProg(void)
 {
   if(R_ProgAdr<3)   //限制最多3段
   {
-    /*
-    if(ChangeUnitFlg==0)
-    {  //公制 
-    if(R_WarkUpCoolDownMode==WarkUpVal)
-    R_SpeedNum=T_WarkUpSpeedTabe_Km[R_ProgAdr];
-						else  if(R_WarkUpCoolDownMode==CoolDownVal)
-    R_SpeedNum=T_CoolDownSpeedTabe_Km[R_ProgAdr];
-  }
-					else
-    { //英制
-    if(R_WarkUpCoolDownMode==WarkUpVal)
-    R_SpeedNum=T_WarkUpSpeedTabe_Mile[R_ProgAdr];
-							else  if(R_WarkUpCoolDownMode==CoolDownVal)
-    R_SpeedNum=T_CoolDownSpeedTabe_Mile[R_ProgAdr];
-  }
-    */
     if(R_WarkUpCoolDownMode==WarkUpVal)
       R_SpeedNum=F_TargetSpdCount(T_WarkUpSpeedTabe[R_ProgAdr]);
     else  if(R_WarkUpCoolDownMode==CoolDownVal)
@@ -414,21 +398,31 @@ void  F_ProgSportMode_Key(void)
               break;
               //=============
               case	InclineUp_KeyVal:
-                KeyCode=0;	
-                F_IncSetControlUp();
+                KeyCode=0;
+                F_ProgSportModeIncUp();
                 F_ChangeShowInc();
-                R_SaveIncProg[R_ProgramIndex]=R_IncNum;
-                F_ChangeGraphInc(R_ProgramIndex,R_IncNum);		
 		break;	
                 //=============
                 case	InclineDown_KeyVal:
                   KeyCode=0;
-                  F_IncSetControlDown();
+                  F_ProgSportModeIncDown();
                   F_ChangeShowInc();
-                  R_SaveIncProg[R_ProgramIndex]=R_IncNum;
-                  F_ChangeGraphInc(R_ProgramIndex,R_IncNum);		
                   break;
   }
+}
+//=====================================
+void    F_ProgSportModeIncUp(void)
+{
+    F_IncSetControlUp();
+    R_SaveIncProg[R_ProgramIndex]=R_IncNum;
+    F_ChangeGraphInc(R_ProgramIndex,R_IncNum);
+}
+//=====================================
+void    F_ProgSportModeIncDown(void)
+{
+    F_IncSetControlDown();
+    R_SaveIncProg[R_ProgramIndex]=R_IncNum;
+    F_ChangeGraphInc(R_ProgramIndex,R_IncNum);		
 }
 //=====================================
 void    F_ProgSportIncQuickKey(unsigned char Data)

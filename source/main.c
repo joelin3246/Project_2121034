@@ -451,7 +451,6 @@ int main(void)
 {
   // Configure System 
   F_SysInit();
-  //M_ERP_SetLow;
   M_ERP_SetHigh;
   LongBzFlg=1;                  // 開機 B 1聲
   IncStopFlg=1;                 // 揚升關閉

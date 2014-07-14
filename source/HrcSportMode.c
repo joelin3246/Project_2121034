@@ -58,37 +58,6 @@ void  F_HrcSpdIncCount(void)
       if(HrcSpdIncFlg==1)
       { //  Speed
         HrcSpdIncFlg=0;
-        /*
-        if(HeartTemp>R_Thr)
-        {
-        ThrTemp=HeartTemp-R_Thr;
-        if(ThrTemp<=5)          
-        {
-        
-      }
-                else  if(ThrTemp<=15)   
-        F_HrcSpeedShowDown(1);  //  實際心跳值≧目標心跳值5時
-                else  if(ThrTemp<=25)   
-        F_HrcSpeedShowDown(2);  //  實際心跳值≧目標心跳值15時
-                else
-        F_HrcSpeedShowDown(3);        //  實際心跳值≧目標心跳值25時
-      }
-              else
-        {
-        ThrTemp=R_Thr-HeartTemp;
-        if(ThrTemp<=5)            
-        {
-        
-      }
-                  else  if(ThrTemp<=15)  
-        F_HrcSpeedShowUp(1);    //  實際心跳值≦目標心跳值25時
-                  else  if(ThrTemp<=25)  
-        F_HrcSpeedShowUp(2);    //  實際心跳值≦目標心跳值15時
-                  else
-        F_HrcSpeedShowUp(3);          //  實際心跳值≦目標心跳值25時
-      }
-        */
-        //======================================
       }
       else
       { //  Inc
@@ -136,32 +105,6 @@ void  F_HrcSpdIncCount(void)
         R_SpeedNum=R_SpeedMin;
       }
     }
-    /*
-    if(R_SpeedNum==R_SpeedMin)
-    {
-    R_HrcNoPulse++;
-    if(R_HrcNoPulse>59)
-    {
-    F_ProgSetInit();
-    R_IncNum=IncDefVal;
-    R_BzCnt=0x04;
-  }
-  }
-    else
-    {  
-    R_HrcNoPulse++;
-    if(R_HrcNoPulse>29)   // 30 秒後開始減
-    {
-    R_HrcNoPulse=25;    // 每5秒減1
-    R_SpeedNum=R_SpeedNum-4;
-    if(R_SpeedNum<=R_SpeedMin)
-    {
-    R_SpeedNum=R_SpeedMin;
-    R_HrcNoPulse=0;
-  }
-  }
-  }
-    */
   }
 }
 //===========================================================
@@ -304,36 +247,46 @@ void  F_HrcSportMode_Key(void)
             //=============
             case	InclineUp_KeyVal:
               KeyCode=0;	
-              if(IncErrFlg==0)
-              {
-                if(R_IncNum<R_IncMax)
-                {
-                  R_IncNum++;
-                  if(R_LongKeyStopBz==0)	
-                    R_BzCnt=0x04;	
-                }
-                else
-                  R_IncNum=R_IncMax;
-              }
+              F_HrcSportModeIncUp();
               break;	
               //=============
               case	InclineDown_KeyVal:
-                KeyCode=0;
-		if(IncErrFlg==0)
-		{	
-                  if(R_IncNum>IncDefVal)
-                  {
-                    R_IncNum--;
-                    if(R_LongKeyStopBz==0)	
-                      R_BzCnt=0x04;	
-                  }
-                  else
-                    R_IncNum=IncDefVal;
-		}
+              KeyCode=0;
+              F_HrcSportModeIncDown();
 		break;
   }	
 }
-//====================================================
+//===================================================
+void    F_HrcSportModeIncUp(void)
+{
+    if(IncErrFlg==0)
+    {
+      if(R_IncNum<R_IncMax)
+      {
+        R_IncNum++;
+        if(R_LongKeyStopBz==0)	
+          R_BzCnt=0x04;	
+      }
+      else
+        R_IncNum=R_IncMax;
+    }
+}
+//===================================================
+void    F_HrcSportModeIncDown(void)
+{
+    if(IncErrFlg==0)
+    {	
+      if(R_IncNum>IncDefVal)
+      {
+        R_IncNum--;
+        if(R_LongKeyStopBz==0)	
+          R_BzCnt=0x04;	
+      }
+      else
+        R_IncNum=IncDefVal;
+    } 
+}
+//===================================================
 //
 //===================================================
 void    F_HrcIncQuickKey(unsigned char Data)

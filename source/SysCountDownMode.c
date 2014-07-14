@@ -43,7 +43,7 @@ void F_CountDown(void)
 {
   if(R_CountDownCnt==0)
   {
-    R_IncNum=R_IncBuf;
+    //R_IncNum=R_IncBuf;
     switch(R_PorgMode)
     {
       case ManualVal:
@@ -70,7 +70,7 @@ void F_CountDown(void)
         break;
       //============
     }
-    IncStopFlg=0;
+    //IncStopFlg=0;
     LongBzFlg=1;
     F_SpeedFirstInit();
     F_StringInit();

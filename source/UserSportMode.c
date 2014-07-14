@@ -34,62 +34,6 @@ void  F_UserSportMode(void)
   }
 }
 //====================================================
-void	F_UserTimecount(void)
-{
-  /*
-  if(TimeStatusFlg==1)
-  {
-  if(R_TimeL==0)
-  {
-  R_TimeH--;
-  R_TimeL=59;
-}
-				else
-  {
-  R_TimeL--;
-  if((R_TimeL==0) && (R_TimeH==0))
-  {  
-  F_SportModeEndInit();
-}
-}
-}
-			else		
-  {		//時間正數
-  if(R_TimeL<59)
-  R_TimeL++;
-					else
-  {
-  R_TimeL=0;
-  R_TimeH++;
-  if(R_TimeH>99)
-  R_TimeH=0;
-}
-}
-  //===========================
-  if(R_SysMode==UserSportModeVal)
-  {
-  if(R_ProgTime>=R_ProgTimeBase-3)     //換段前1秒，警示聲
-  {
-  if(R_ProgramIndex!=29)	//	最後1段不響
-  R_BzCnt=0x04;
-}
-  R_ProgTime++;
-  if(R_ProgTime>=R_ProgTimeBase)
-  {
-  R_ProgTime=0;
-  R_ProgramIndex++;
-  if(R_ProgramIndex>=30)
-  {	
-  R_ProgramIndex=0;	
-  F_ReadProgData();
-}
-								else
-  F_ReadProgData();
-}
-}
-  */
-}
-//====================================================
 //  Key
 //====================================================
 void  F_UserSportMode_Key(void)
@@ -236,18 +180,14 @@ void  F_UserSportMode_Key(void)
               //=============
               case	InclineUp_KeyVal:
                 KeyCode=0;
-                F_IncSetControlUp();
-                F_ChangeShowInc();				
-                R_SaveIncProg[R_ProgramIndex]=R_IncNum;
-                F_ChangeGraphInc(R_ProgramIndex,R_IncNum);
+                F_ProgSportModeIncUp();
+                F_ChangeShowInc();
 		break;	
                 //=============
                 case	InclineDown_KeyVal:
                   KeyCode=0;
-                  F_IncSetControlDown();
+                  F_ProgSportModeIncDown();
                   F_ChangeShowInc();
-                  R_SaveIncProg[R_ProgramIndex]=R_IncNum;
-                  F_ChangeGraphInc(R_ProgramIndex,R_IncNum);
                   break;			
   }
 }

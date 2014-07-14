@@ -303,6 +303,8 @@ void  F_ProgSportEnd(void);
 void  F_ProgCoolDownEnd(void);
 void  F_ReadWarkUpProg(void);
 void  F_ProgSportMode_Key(void);
+void    F_ProgSportModeIncUp(void);
+void    F_ProgSportModeIncDown(void);
 void    F_ProgSportIncQuickKey(unsigned char Data);
 void    F_ProgSportSpdQuickKey(unsigned char Data);
 void	F_ChangeShowSpeed(void);
@@ -312,6 +314,8 @@ void  F_ProgSportMode_Lcd(void);
 //========================
 void	F_SysSportPassMode(void);
 void	F_SysSportPassMode_Key(void);
+void    F_SysSportPassModeIncUp(void);
+void    F_SysSportPassModeIncDown(void);
 void	F_SysSportPassMode_lcd(void);
 void	F_PassModeInit(void);
 //========================
@@ -324,7 +328,6 @@ void	F_SysErrMode(void);
 void	F_SysErrMode_Lcd(void);
 //========================
 void  F_UserSportMode(void);
-void	F_UserTimecount(void);
 void  F_UserSportMode_Key(void);
 void  F_UserSportMode_Lcd(void);
 //========================
@@ -335,6 +338,8 @@ void  F_HrcSpeedShowDown(unsigned char  Speed);
 void  F_IncControlUp(unsigned char  inc);
 void  F_IncControlDown(unsigned char  inc);
 void  F_HrcSportMode_Key(void);
+void    F_HrcSportModeIncUp(void);
+void    F_HrcSportModeIncDown(void);
 void    F_HrcIncQuickKey(unsigned char Data);
 void  F_HrcSportMode_Lcd(void);
 //====================================================
