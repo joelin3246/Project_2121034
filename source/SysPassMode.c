@@ -40,36 +40,91 @@ void	F_SysSportPassMode_Key(void)
     KeyCode=0;
     
     break;
-    //==========
+   //======================
+    case	QuickInc_2_KeyVal:
+      KeyCode=0;
+      F_SysSportPassModeIncQuick(3);
+      break;		
+    //======================
+    case	QuickInc_4_KeyVal:
+      KeyCode=0;
+      F_SysSportPassModeIncQuick(5);
+      break;
+    //======================
+    case	QuickInc_6_KeyVal:
+      KeyCode=0;
+      F_SysSportPassModeIncQuick(7);
+      break; 
+    //======================
+    case	QuickInc_8_KeyVal:
+      KeyCode=0;
+      F_SysSportPassModeIncQuick(9);
+      break;
+    //======================
+    case	QuickInc_10_KeyVal:
+      KeyCode=0;
+      F_SysSportPassModeIncQuick(11);
+      break;
+    //======================
+    case	QuickInc_12_KeyVal:
+      KeyCode=0;
+      F_SysSportPassModeIncQuick(13);
+      break;
+    //======================
     case	InclineUp_KeyVal:
       KeyCode=0;
       F_SysSportPassModeIncUp();
       break;	
-      //==========
-      case	InclineDown_KeyVal:
+    //======================
+    case	InclineDown_KeyVal:
+      KeyCode=0;
+      F_SysSportPassModeIncDown();
+      break;			
+    //======================
+    case	start_stop_KeyVal:
         KeyCode=0;
-        F_SysSportPassModeIncDown();
-        break;			
-        //==========
-        case	start_stop_KeyVal:
-          KeyCode=0;
-          if(SpeedMoveFlg==0)
-          {
+        if(SpeedMoveFlg==0)
+        {
             F_CountDownModeInit();
             R_BzCnt=0x04;
-          }
-          break;
-          //==========
-          case	Mode_KeyVal:
-            KeyCode=0;
-            F_ProgSetInit();
-            R_BzCnt=0x04;
-            break;
+        }
+      break;
+    //======================
+    case	Mode_KeyVal:
+        KeyCode=0;
+        F_ProgSetInit();
+        R_BzCnt=0x04;
+      break;
   }
+}
+//====================================================
+void    F_SysSportPassModeIncQuick(unsigned char Data)
+{
+    switch(R_PorgMode)
+    {
+      case ManualVal:
+      case Hrc1Val:
+      case Hrc2Val:
+      F_IncQuickKey(Data);
+        break;
+      //============		
+      case Prog1Val:
+      case Prog2Val:
+      case Prog3Val:		
+      case Prog4Val:		
+      case Prog5Val:
+      case User1Val:
+      case User2Val:
+      case User3Val:
+      F_ProgSportIncQuickKey(Data);
+        break;
+      //============
+    }
 }
 //====================================================
 void    F_SysSportPassModeIncUp(void)
 {
+  IncStopFlg=0;
     switch(R_PorgMode)
     {
       case ManualVal:
@@ -97,6 +152,7 @@ void    F_SysSportPassModeIncUp(void)
 //====================================================
 void    F_SysSportPassModeIncDown(void)
 {
+  IncStopFlg=0;
     switch(R_PorgMode)
     {
       case ManualVal:

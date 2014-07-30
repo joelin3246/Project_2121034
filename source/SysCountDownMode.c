@@ -70,7 +70,7 @@ void F_CountDown(void)
         break;
       //============
     }
-    //IncStopFlg=0;
+    IncStopFlg=0;
     LongBzFlg=1;
     F_SpeedFirstInit();
     F_StringInit();

@@ -193,32 +193,32 @@ void  F_HrcSportMode_Key(void)
     //======================
     case	QuickInc_2_KeyVal:
       KeyCode=0;
-      F_HrcIncQuickKey(3);
+      F_IncQuickKey(3);
       break;		
     //======================
     case	QuickInc_4_KeyVal:
       KeyCode=0;
-      F_HrcIncQuickKey(5);
+      F_IncQuickKey(5);
       break;
     //======================
     case	QuickInc_6_KeyVal:
       KeyCode=0;
-      F_HrcIncQuickKey(7);
+      F_IncQuickKey(7);
       break; 
     //======================
     case	QuickInc_8_KeyVal:
       KeyCode=0;
-      F_HrcIncQuickKey(9);
+      F_IncQuickKey(9);
       break;
     //======================
     case	QuickInc_10_KeyVal:
       KeyCode=0;
-      F_HrcIncQuickKey(11);
+      F_IncQuickKey(11);
       break;
     //======================
     case	QuickInc_12_KeyVal:
       KeyCode=0;
-      F_HrcIncQuickKey(13);
+      F_IncQuickKey(13);
       break;
     //=======================		
     case	Mode_KeyVal:
@@ -259,8 +259,11 @@ void  F_HrcSportMode_Key(void)
 //===================================================
 void    F_HrcSportModeIncUp(void)
 {
-    if(IncErrFlg==0)
-    {
+    if(IncErrFlg==1)
+      IncErrFlg=0;		//發生揚升錯誤，在按下揚升動作需要能解除錯誤
+    
+    IncStopFlg=0;
+
       if(R_IncNum<R_IncMax)
       {
         R_IncNum++;
@@ -269,13 +272,15 @@ void    F_HrcSportModeIncUp(void)
       }
       else
         R_IncNum=R_IncMax;
-    }
 }
 //===================================================
 void    F_HrcSportModeIncDown(void)
 {
-    if(IncErrFlg==0)
-    {	
+    if(IncErrFlg==1)
+      IncErrFlg=0;		//發生揚升錯誤，在按下揚升動作需要能解除錯誤
+    
+    IncStopFlg=0;
+    
       if(R_IncNum>IncDefVal)
       {
         R_IncNum--;
@@ -284,17 +289,6 @@ void    F_HrcSportModeIncDown(void)
       }
       else
         R_IncNum=IncDefVal;
-    } 
-}
-//===================================================
-//
-//===================================================
-void    F_HrcIncQuickKey(unsigned char Data)
-{
-  if(IncErrFlg==0) {
-    R_IncNum = Data;
-    R_BzCnt=0x04;	
-  }
 }
 //====================================================
 //  LCD
