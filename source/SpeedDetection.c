@@ -370,43 +370,10 @@ void	F_SpeedControl(unsigned	char	Speed)
 //=====================================
 void F_SpeedSwCotrol(unsigned char Data)
 {
-  /*
     if(Data)	
       M_Sw_Ctrl_SetHigh;
     else
       M_Sw_Ctrl_SetLow;
-  */  
-  if(AcDcMotorFlg)
-  {
-    if(Data)	
-      M_Sw_Ctrl_SetHigh;
-    else
-      M_Sw_Ctrl_SetLow;
-  }
-  else
-  {
-    if(Data)	
-      M_Sw_Ctrl_SetLow;
-    else
-      M_Sw_Ctrl_SetHigh;
-  }
-  /*
-#if O_A2121034	//	DC±±¨î
-  //======================
-  if(Data)	
-  BitSet(PC_ODR,BIT2);		//	SW
-		else
-  BitClr(PC_ODR,BIT2);		//	SW
-  //======================	
-#else		//	AC ±±¨î
-  //======================
-  if(Data)	
-  BitClr(PC_ODR,BIT2);		//	SW	
-				else
-  BitSet(PC_ODR,BIT2);		//	SW
-  //======================		
-#endif  
-  */
 }
 //=====================================
 

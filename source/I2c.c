@@ -419,36 +419,6 @@ void  F_Write4Byte(unsigned char  WriteDataAdr,unsigned long  Data)
     EE_Write(WriteDataAdr+2,TempByte_3);
     EE_Write(WriteDataAdr+3,TempByte_4);
 }
-// ==============================================================================
-// Function Name:    void read_ext_device_packet(char address,char *data,char size)
-//   Description:    讀取裝置封包
-//        Inputs:    char address
-//                   char *data     , 存放資料位置
-//                   char size      , 封包大小
-//       Outputs:    
-// ==============================================================================
-void F_ReadArray(char address,char *data,char size) 
-{
-  /*
-  unsigned char H_ADD = 0,i;
-  F_I2C_Start();            
-  F_Write_I2C_Control(0x0A,H_ADD,0);   
-  F_Write_I2C_Byte(address);      
-  for (i=0;i<size;i++ ) {
-      
-  }
-  F_I2C_Stop();       
-  
-      SpeedTemp=EE_Read(EE_UserSpeedAdr+i);
-      R_SaveSpeedProg[i]=SpeedTemp;
-      F_ChangeGraphSpeed(i,SpeedTemp);
-      IncTemp=EE_Read(EE_UserIncAdr+i);
-      R_SaveIncProg[i]=IncTemp;
-      F_ChangeGraphInc(i,IncTemp);
-    R_User_SetSpeed=EE_Read(EE_UserSpeedAdr);
-    R_User_SetInc=EE_Read(EE_UserIncAdr);
-  */
-}
 //==============
 void	F_EE_init(void)
 {

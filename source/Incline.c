@@ -440,48 +440,16 @@ void  F_IncAuto(void)
 //===================================================
 void F_IncIoUpControl(unsigned char     Data)
 {  
-    /*
     if(Data)
       P_M2_UP_GPIO_PORT -> BSRR = P_M2_UP_PIN;  
       else
         P_M2_UP_GPIO_PORT -> BRR = P_M2_UP_PIN;  
-    */   
-  if(AcDcMotorFlg)
-  {
-    if(Data)
-      P_M2_UP_GPIO_PORT -> BSRR = P_M2_UP_PIN;  
-      else
-        P_M2_UP_GPIO_PORT -> BRR = P_M2_UP_PIN;   
-  }
-  else
-  {
-    if(Data)
-      P_M2_UP_GPIO_PORT -> BRR = P_M2_UP_PIN;   
-      else
-        P_M2_UP_GPIO_PORT -> BSRR = P_M2_UP_PIN;  
-  }
 }
 //===================================================
 void F_IncIoDownControl(unsigned char   Data)
 {
-  /*
     if(Data)
       P_M2_DOWN_GPIO_PORT -> BSRR = P_M2_DOWN_PIN;   
       else
         P_M2_DOWN_GPIO_PORT->BRR = P_M2_DOWN_PIN; 
-  */
-  if(AcDcMotorFlg)
-  {
-    if(Data)
-      P_M2_DOWN_GPIO_PORT -> BSRR = P_M2_DOWN_PIN;   
-      else
-        P_M2_DOWN_GPIO_PORT->BRR = P_M2_DOWN_PIN;  
-  }
-  else
-  {
-    if(Data)
-      P_M2_DOWN_GPIO_PORT->BRR = P_M2_DOWN_PIN;  
-      else
-        P_M2_DOWN_GPIO_PORT -> BSRR = P_M2_DOWN_PIN;   
-  }
 }

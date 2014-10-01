@@ -88,7 +88,7 @@ void	F_Eng1EntertSet(void)
             break;
             //=============	
             case	4:		
-              R_Mode=5;
+              R_Mode=0;
               EE_Write(EE_IncMax,R_IncMax);
               break;
               //=============	
