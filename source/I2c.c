@@ -115,9 +115,10 @@ void  F_EUP_EEPROM_GPIO(void)
 //==============================================================================
 //EEPROM ©µ¿ð
 //==============================================================================
-void F_EEDelay(unsigned short cnt)
+void F_EEDelay(volatile unsigned short cnt)
 {
-  unsigned short c;
+  /*
+  volatile unsigned short c;
   // Delay for EEPROM Write
   c=0;
   while(c<cnt)
@@ -129,6 +130,17 @@ void F_EEDelay(unsigned short cnt)
     __asm("nop");
     __asm("nop");      
   }
+  */
+    while(cnt>1)
+    {
+      cnt--;
+      __asm("nop");
+      __asm("nop");
+      __asm("nop");
+      __asm("nop");
+      __asm("nop");  
+    }
+    cnt=0;
 }
 //==============================================================================
 //This routine returns a 0 if the I2C device sends an acknowledge
@@ -162,8 +174,6 @@ void F_I2C_Start (void)
 //==============================================================================
 //This routine will send the I2C Stop Bit
 //==============================================================================
-volatile unsigned short EepromDelayTimeCnt;
-
 void F_EepromDelayTime(void)
 {
     EepromDelayTimeCnt++;
@@ -216,7 +226,7 @@ void F_Write_I2C_Byte(unsigned char byte)
   
   F_SDA_SetOutput();                    // Set SDA to output
   M_SCL_SetLow;                         // Clear I2C SCL PIN
-  F_EEDelay(5); 
+  F_EEDelay(300); 
   
   for (i = 0; i < 8; i++)               // Loop for our 8 bits
   {  				
@@ -227,10 +237,10 @@ void F_Write_I2C_Byte(unsigned char byte)
       M_SDA_SetLow;                     // Clear I2C SDA PIN
     
     M_SCL_SetHigh;                      // Set SCL High, Clock data
-    F_EEDelay(5); 
+    F_EEDelay(300); 
     byte = byte << 1;                   // Shift data in buffer right one
     M_SCL_SetLow;                       // Clear SCL
-    F_EEDelay(5); 
+    F_EEDelay(300); 
   }
   while(F_I2C_Ackn());                  // Check for acknowledge from I2C device	
 }
@@ -328,7 +338,7 @@ void F_Write_I2C_Control(unsigned char D_Code,unsigned char H_ADD,unsigned char 
 //==============================================================================
 void EE_Write(unsigned char M_ADD,unsigned char Data)
 {
-  unsigned char H_ADD = 0;
+  volatile unsigned char H_ADD = 0;
   F_I2C_Start();                                // Set I2C start condition
   F_Write_I2C_Control(0x0A,H_ADD,0);            // Send the EEPROM control Byte
   F_Write_I2C_Byte(M_ADD);                      // Send the EEPROM internal Address
@@ -345,7 +355,7 @@ void EE_Write(unsigned char M_ADD,unsigned char Data)
 unsigned char EE_Read(unsigned char M_ADD)
 {
   unsigned char Temp;                           // Temp RAM for EEPROM Read
-  unsigned char H_ADD = 0;
+  volatile unsigned char H_ADD = 0;
     
   F_I2C_Start();                                // Set I2C start condition
   F_Write_I2C_Control(0x0A,H_ADD,0);            // Send the EEPROM control Byte   // Dummy write to set address

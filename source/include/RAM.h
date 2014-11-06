@@ -212,3 +212,5 @@ extern	unsigned long   R_TotalTime,R_TotalDis;
 extern	unsigned int    R_TotalLube;
 
 extern	unsigned int    R_SpdFbTimeEnd;
+
+extern	volatile unsigned short EepromDelayTimeCnt;

@@ -186,3 +186,5 @@ unsigned long   R_TotalTime,R_TotalDis;
 unsigned int    R_TotalLube;
 
 unsigned int    R_SpdFbTimeEnd;
+
+volatile unsigned short EepromDelayTimeCnt;

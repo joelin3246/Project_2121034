@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=-95330157
+Checksum=1758842843
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -86,17 +86,19 @@ Fmt30={W}0:R_THR	3	0
 Fmt31={W}0:R_TestRam	3	0
 Fmt32={W}0:R_W_Pluse	3	0
 Fmt33={W}0:RealLevelAd	3	0
-Fmt34={W}0:TempMoveGraphAdr	3	0
-Fmt35={W}0:TempMoveGraphAdrNext	3	0
-Fmt36={W}0:Test	3	0
-Fmt37={W}0:TestIncAd	3	0
-Fmt38={W}0:TestRam1	4	0
-Fmt39={W}0:TimeBase	3	2
-Fmt40={W}0:i	3	0
-Fmt41={W}0:j	4	0
-Fmt42={W}0:l	3	0
-Fmt43={W}0:m	4	0
-Fmt44={W}0:n	4	0
+Fmt34={W}0:TempByte1	4	0
+Fmt35={W}0:TempByte2	4	0
+Fmt36={W}0:TempMoveGraphAdr	3	0
+Fmt37={W}0:TempMoveGraphAdrNext	3	0
+Fmt38={W}0:Test	3	0
+Fmt39={W}0:TestIncAd	3	0
+Fmt40={W}0:TestRam1	4	0
+Fmt41={W}0:TimeBase	3	2
+Fmt42={W}0:i	3	0
+Fmt43={W}0:j	4	0
+Fmt44={W}0:l	3	0
+Fmt45={W}0:m	4	0
+Fmt46={W}0:n	4	0
 [Trace2]
 Enabled=0
 ShowSource=0
@@ -126,8 +128,7 @@ SumSortOrder=0
 mode=0
 [Breakpoints2]
 Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\source\Periph_Driver\eeprom.c}.502.3" 0 0 1 "" 0 "" 0
-Bp1=_ 1 "EMUL_CODE" "{$PROJ_DIR$\source\Incline.c}.152.7" 0 0 1 "" 0 "" 0
-Count=2
+Count=1
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
