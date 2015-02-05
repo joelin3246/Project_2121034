@@ -214,3 +214,5 @@ extern	unsigned int    R_TotalLube;
 extern	unsigned int    R_SpdFbTimeEnd;
 
 extern	volatile unsigned short EepromDelayTimeCnt;
+
+extern	unsigned char   R_IncZeroAdr;

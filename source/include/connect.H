@@ -95,8 +95,8 @@
 //	212103401	寧茂 eup控制器
 
 // Eeprom 識別碼
-#define EepromVer_1             0xA5    //  位址 0xFA
-#define EepromVer_2             0x10    //  位址 0xFB	212101800 取後面6碼 
+#define EepromVer_1             0xA6    //  位址 0xFA
+#define EepromVer_2             0x10    //  位址 0xFB	212103400 取後面6碼 
 #define EepromVer_3             0x34    //  位址 0xFC
 #define EepromVer_4             0x00    //  位址 0xFC
 // Eeprom 位址 
@@ -127,7 +127,8 @@
 #define EE_TotalLubeBye_L       0x18
 #define EE_TotalLubeBye_H       0x19
 #define EE_SaveUserInit         0x1A
-#define EE_AcDcMotor   			0x1B		
+#define EE_AcDcMotor            0x1B		
+#define EE_IncZeroAdr           0x1C	
 
 #define UserStartAdr          	0x30
 #define User_1_SpeedAdrVal    	UserStartAdr 
@@ -509,6 +510,7 @@ void	F_LcdTest(unsigned	char	Data);
 void	F_ProgTest(unsigned	char	Data);
 //========================
 void	F_EngMode4(void);
+void    F_IncFinsh(void);
 void	F_Eng4Test(void);
 void	F_EngMode4_Key1(void);
 void	F_EngMode4_Key2(void);

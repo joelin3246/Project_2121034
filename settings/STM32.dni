@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=1758842843
+Checksum=2138924100
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -68,37 +68,38 @@ Fmt12={W}0:R_ComTimeH	3	0
 Fmt13={W}0:R_HRCD1	3	0
 Fmt14={W}0:R_HRCWaitcnt	3	0
 Fmt15={W}0:R_IncAutoTemp1	3	0
-Fmt16={W}0:R_IncMinAd	3	0
-Fmt17={W}0:R_IncNumAd	3	0
-Fmt18={W}0:R_IncNumAdBuf	3	0
-Fmt19={W}0:R_Key.KeyRam	3	0
-Fmt20={W}0:R_Key.ScanKeyTemp	4	0
-Fmt21={W}0:R_KeyTestDecid	4	0
-Fmt22={W}0:R_Mode.SysMasterMode	3	0
-Fmt23={W}0:R_MotorErrAd	3	0
-Fmt24={W}0:R_MotorErrTime	3	0
-Fmt25={W}0:R_NewResistanceVR1	3	0
-Fmt26={W}0:R_OldResistanceVR1	3	0
-Fmt27={W}0:R_RLevel	3	0
-Fmt28={W}0:R_RampNum	3	0
-Fmt29={W}0:R_SetResistanceVR1	3	0
-Fmt30={W}0:R_THR	3	0
-Fmt31={W}0:R_TestRam	3	0
-Fmt32={W}0:R_W_Pluse	3	0
-Fmt33={W}0:RealLevelAd	3	0
-Fmt34={W}0:TempByte1	4	0
-Fmt35={W}0:TempByte2	4	0
-Fmt36={W}0:TempMoveGraphAdr	3	0
-Fmt37={W}0:TempMoveGraphAdrNext	3	0
-Fmt38={W}0:Test	3	0
-Fmt39={W}0:TestIncAd	3	0
-Fmt40={W}0:TestRam1	4	0
-Fmt41={W}0:TimeBase	3	2
-Fmt42={W}0:i	3	0
-Fmt43={W}0:j	4	0
-Fmt44={W}0:l	3	0
-Fmt45={W}0:m	4	0
-Fmt46={W}0:n	4	0
+Fmt16={W}0:R_IncCarryAd	3	0
+Fmt17={W}0:R_IncMinAd	3	0
+Fmt18={W}0:R_IncNumAd	3	0
+Fmt19={W}0:R_IncNumAdBuf	3	0
+Fmt20={W}0:R_Key.KeyRam	3	0
+Fmt21={W}0:R_Key.ScanKeyTemp	4	0
+Fmt22={W}0:R_KeyTestDecid	4	0
+Fmt23={W}0:R_Mode.SysMasterMode	3	0
+Fmt24={W}0:R_MotorErrAd	3	0
+Fmt25={W}0:R_MotorErrTime	3	0
+Fmt26={W}0:R_NewResistanceVR1	3	0
+Fmt27={W}0:R_OldResistanceVR1	3	0
+Fmt28={W}0:R_RLevel	3	0
+Fmt29={W}0:R_RampNum	3	0
+Fmt30={W}0:R_SetResistanceVR1	3	0
+Fmt31={W}0:R_THR	3	0
+Fmt32={W}0:R_TestRam	3	0
+Fmt33={W}0:R_W_Pluse	3	0
+Fmt34={W}0:RealLevelAd	3	0
+Fmt35={W}0:TempByte1	4	0
+Fmt36={W}0:TempByte2	4	0
+Fmt37={W}0:TempMoveGraphAdr	3	0
+Fmt38={W}0:TempMoveGraphAdrNext	3	0
+Fmt39={W}0:Test	3	0
+Fmt40={W}0:TestIncAd	3	0
+Fmt41={W}0:TestRam1	4	0
+Fmt42={W}0:TimeBase	3	2
+Fmt43={W}0:i	3	0
+Fmt44={W}0:j	4	0
+Fmt45={W}0:l	3	0
+Fmt46={W}0:m	4	0
+Fmt47={W}0:n	4	0
 [Trace2]
 Enabled=0
 ShowSource=0
@@ -124,11 +125,6 @@ GraphEnabled=0
 ShowTimeLog=1
 ShowTimeSum=1
 SumSortOrder=0
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\source\Periph_Driver\eeprom.c}.502.3" 0 0 1 "" 0 "" 0
-Count=1
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -136,14 +132,6 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[Aliases]
-A0=_ "C:\Users\stone\Desktop\STM32\source\mode\Mode_Idle.c" ""
-A1=_ "D:\英達開發資料\21-12-001\21-12-001\程式\2112001_test\source\main.c" ""
-A2=_ "D:\英達開發資料\21-12-001\21-12-001\程式\STM32\Framework\system_stm32.c" ""
-A3=_ "D:\英達開發資料\21-12-001\21-12-001\程式\STM32\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.c" ""
-A4=_ "D:\英達開發資料\21-12-001\21-12-001\程式\STM32\source\stm32f0xx_it.c" ""
-Count=5
-SuppressDialog=1
 [CallStackLog]
 Enabled=0
 [DriverProfiling]
@@ -152,3 +140,16 @@ Mode=3
 Graph=0
 Symbiont=0
 Exclusions=
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\source\Periph_Driver\eeprom.c}.502.3" 0 0 1 "" 0 "" 0
+Count=1
+[Aliases]
+A0=_ "C:\Users\stone\Desktop\STM32\source\mode\Mode_Idle.c" ""
+A1=_ "D:\英達開發資料\21-12-001\21-12-001\程式\2112001_test\source\main.c" ""
+A2=_ "D:\英達開發資料\21-12-001\21-12-001\程式\STM32\Framework\system_stm32.c" ""
+A3=_ "D:\英達開發資料\21-12-001\21-12-001\程式\STM32\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.c" ""
+A4=_ "D:\英達開發資料\21-12-001\21-12-001\程式\STM32\source\stm32f0xx_it.c" ""
+Count=5
+SuppressDialog=1

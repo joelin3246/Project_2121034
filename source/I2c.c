@@ -226,7 +226,7 @@ void F_Write_I2C_Byte(unsigned char byte)
   
   F_SDA_SetOutput();                    // Set SDA to output
   M_SCL_SetLow;                         // Clear I2C SCL PIN
-  F_EEDelay(300); 
+  F_EEDelay(300);       // 2014/11/6
   
   for (i = 0; i < 8; i++)               // Loop for our 8 bits
   {  				
@@ -237,10 +237,10 @@ void F_Write_I2C_Byte(unsigned char byte)
       M_SDA_SetLow;                     // Clear I2C SDA PIN
     
     M_SCL_SetHigh;                      // Set SCL High, Clock data
-    F_EEDelay(300); 
+    F_EEDelay(300);       // 2014/11/6
     byte = byte << 1;                   // Shift data in buffer right one
     M_SCL_SetLow;                       // Clear SCL
-    F_EEDelay(300); 
+    F_EEDelay(300);       // 2014/11/6
   }
   while(F_I2C_Ackn());                  // Check for acknowledge from I2C device	
 }
@@ -474,10 +474,12 @@ void  F_EepromNoDataInit(void)
       R_IncMax=IncMaxVal;             //  預設Incline 最大段數
       EE_Write(EE_IncMax,R_IncMax);
       //=========
+      R_IncZeroAdr = 17;        // 揚升 0 點 位置 ad 值
       R_IncMaxAd=0xF0;
       R_IncMinAd=0x1A;
       R_IncCarryAd=0x0A;
       IncUpDownFlg=1;     //正向
+      EE_Write(EE_IncZeroAdr,R_IncZeroAdr);
       EE_Write(EE_IncUpDown,1);						
       EE_Write(EE_IncMaxAd,R_IncMaxAd);
       EE_Write(EE_IncMinAd,R_IncMinAd);
@@ -526,6 +528,7 @@ void  F_ReadProg_EE(void)
     //==================  
     //R_Age=EE_Read(EE_Age);
     R_Weight=F_Read2Byte(EE_Wight_L);
+    R_IncZeroAdr = EE_Read(EE_IncZeroAdr);
     R_IncMax=EE_Read(EE_IncMax);
     R_IncMaxAd=EE_Read(EE_IncMaxAd);
     R_IncMinAd=EE_Read(EE_IncMinAd);

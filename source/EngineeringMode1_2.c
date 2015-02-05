@@ -88,13 +88,22 @@ void	F_Eng1EntertSet(void)
             break;
             //=============	
             case	4:		
-              R_Mode=0;
+              R_Mode=5;
               EE_Write(EE_IncMax,R_IncMax);
               break;
               //=============	
               case	5:		
                 R_Mode=0;
-                EE_Write(EE_AcDcMotor,ShowAcDcMotorFlg);
+                EE_Write(EE_IncZeroAdr,R_IncZeroAdr);
+                if(IncUpDownFlg==1) 
+                {
+                  R_IncMaxAd = R_IncCarryAd;
+                }
+                else
+                {
+                  R_IncMinAd = R_IncCarryAd;
+                }                
+                F_IncFinsh();
                 break;
   }
 }
@@ -192,11 +201,13 @@ void	F_Eng1SpeedUpSet(void)
               break;
               //============
               case	5:
-                if(ShowAcDcMotorFlg)
-                  ShowAcDcMotorFlg=0;
+                if(R_IncZeroAdr<50)
+                  R_IncZeroAdr++;
                 else
-                  ShowAcDcMotorFlg=1;
-                R_BzCnt=0x04;		
+                  R_IncZeroAdr=5;	
+                F_ShowFlashInt();
+                if(R_LongKeyStopBz==0)	//長按時蜂鳴器不叫
+                  R_BzCnt=0x04;
                 break;
   }
 }
@@ -294,11 +305,13 @@ void	F_Eng1SpeedDownSet(void)
               break;
               //===========
               case	5:
-                if(ShowAcDcMotorFlg)
-                  ShowAcDcMotorFlg=0;
-                else
-                  ShowAcDcMotorFlg=1;
-                R_BzCnt=0x04;	
+              if(R_IncZeroAdr>5)
+                R_IncZeroAdr--;	
+              else
+                R_IncZeroAdr=50;
+              F_ShowFlashInt();
+              if(R_LongKeyStopBz==0)
+                R_BzCnt=0x04;
                 break;
   }
 }
@@ -342,20 +355,7 @@ void	F_EngMode1_Lcd(void)
               break;
               //=================	
               case	5:	
-		if(ShowAcDcMotorFlg)
-		{	//	DC
-                  F_Show_8_Lcd(blankVal,48,49,77);
-                  ShowHiByeFlg=1;
-                  F_Show_8_Lcd(blankVal,50,51,00);
-                  ShowHiByeFlg=0;
-		}
-                else
-                {	//	AC
-                  F_Show_8_Lcd(blankVal,48,49,77);
-                  ShowHiByeFlg=1;
-                  F_Show_8_Lcd(blankVal,50,51,30);
-                  ShowHiByeFlg=0;
-                }
+                F_Show_8_Lcd(27,26,25,R_IncZeroAdr);
                 break;
 		//=================			
   }

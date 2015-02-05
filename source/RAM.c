@@ -188,3 +188,5 @@ unsigned int    R_TotalLube;
 unsigned int    R_SpdFbTimeEnd;
 
 volatile unsigned short EepromDelayTimeCnt;
+
+unsigned char   R_IncZeroAdr;

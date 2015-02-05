@@ -511,6 +511,22 @@ void	F_EngMode4(void)
   }
 }
 //==========================================
+void    F_IncFinsh(void)
+{
+      if(IncUpDownFlg==1) 
+      {
+        R_IncCarryAd=R_IncMaxAd;
+        EE_Write(EE_IncCarryAd,R_IncCarryAd);
+        EE_Write(EE_IncMaxAd,R_IncMaxAd - R_IncZeroAdr);
+      }
+      else
+      {
+        R_IncCarryAd=R_IncMinAd;
+        EE_Write(EE_IncCarryAd,R_IncCarryAd);
+        EE_Write(EE_IncMinAd,R_IncMinAd + R_IncZeroAdr);
+      }
+}
+//==========================================
 void	F_Eng4Test(void)
 {
   if(R_Mode==1)	//	校正模式
@@ -519,18 +535,7 @@ void	F_Eng4Test(void)
     {
       //R_Mode=2;       //  打開可以執行揚升的微調
       //===================
-      if(IncUpDownFlg==1) 
-      {
-        R_IncCarryAd=R_IncMaxAd;
-        EE_Write(EE_IncCarryAd,R_IncCarryAd);
-        EE_Write(EE_IncMaxAd,R_IncMaxAd-17);
-      }
-      else
-      {
-        R_IncCarryAd=R_IncMinAd;
-        EE_Write(EE_IncCarryAd,R_IncCarryAd);
-        EE_Write(EE_IncMinAd,R_IncMinAd+17);
-      }
+      F_IncFinsh();
       F_Rest();
       //===================
     }
@@ -561,18 +566,7 @@ void	F_EngMode4_Key3(void)
     //=============
     case	start_stop_KeyVal:
       KeyCode=0;
-      if(IncUpDownFlg==1) 
-      {
-        R_IncCarryAd=R_IncMaxAd;
-        EE_Write(EE_IncCarryAd,R_IncCarryAd);
-        EE_Write(EE_IncMaxAd,R_IncNumAd);
-      }
-      else
-      {
-        R_IncCarryAd=R_IncMinAd;
-        EE_Write(EE_IncCarryAd,R_IncCarryAd);
-        EE_Write(EE_IncMinAd,R_IncNumAd);
-      }
+      F_IncFinsh();
       F_Rest();
       break;
       //=============
@@ -657,6 +651,7 @@ void	F_EngMode4_Lcd(void)
         break;
         //=================
         case	2:	
+          F_Show_8_Lcd(27,26,25,R_IncZeroAdr);
           F_Show_8_Lcd(24,23,22,R_IncNumAd);
           if(IncErrFlg==1)
           {
