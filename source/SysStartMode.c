@@ -26,14 +26,16 @@ void	F_SysStartMode(void)
   if(ShowLcdTimeFlg==1)
   {
     ShowLcdTimeFlg=0;
-    F_AllLCDRam(0x00);
-    F_SysStartMode_Lcd();
-    F_Display();		
+    
   }
   //=================		
   if(T1sFlg==1)
   {
     T1sFlg=0;
+    F_BackLight(1);  
+    F_AllLCDRam(0x00);
+    F_SysStartMode_Lcd();
+    F_Display();	
     F_SysStartTime();						
   }
 }

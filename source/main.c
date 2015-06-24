@@ -64,7 +64,10 @@
       
       2014/12/26
         1. 修改工程模式調整揚升校正0 點位置的參數，由 10 ~ 50 改為5 ~ 50
-          
+
+      2015/6/24
+    1. 修改開機時畫面全顯移到 1 秒時序，並將背光顯示也延時1秒 
+    2. 程式版本進版
 */
 //==========================================================
 /* Includes ------------------------------------------------------------------*/
@@ -476,8 +479,9 @@ int main(void)
   LongBzFlg=1;                  // 開機 B 1聲
   IncStopFlg=1;                 // 揚升關閉
   R_IncNum=1;                   // 揚升預設值
-  F_EE_init();          // 如EEPROM錯誤進入EER模式	  
-  F_BackLight(1);
+  F_EE_init();          // 如EEPROM錯誤進入EER模式	
+  if(R_SysMode != SysStartModeVal)
+    F_BackLight(1); 
   while(1)
   {
     switch(R_SysMode)
@@ -569,6 +573,7 @@ void    F_Safety(void)
           R_SleepTime=0;
           SafetyOnFg=1;	
           IncStopFlg=1;			//	揚升關閉
+          F_BackLight(1);  
           R_SysMode=SysErrModeVal;	
           R_ErrData=0;
         }

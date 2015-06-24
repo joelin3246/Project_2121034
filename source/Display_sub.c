@@ -809,7 +809,7 @@ void	F_ShowAge(void)
 void	F_ShowVer(void)
 {
     ShowHiByeFlg=1;
-    F_Show_8_Lcd(blankVal,26,25,11);
+    F_Show_8_Lcd(blankVal,26,25,12);
     ShowHiByeFlg=0;
     ShowHiByeFlg=0;
     R_Seg[26] |= 0x80;
